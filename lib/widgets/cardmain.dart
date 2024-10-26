@@ -21,7 +21,7 @@ class CardMainWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onEdit, // กดเพื่อเปิดฟอร์มแก้ไข
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           color: Colors.white,
@@ -30,7 +30,7 @@ class CardMainWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
