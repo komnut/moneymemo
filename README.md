@@ -1,16 +1,21 @@
-# moneymemo
+# Money Memo
 
-A new Flutter project.
+Money Memo is a Flutter project that allows users to easily record and manage their financial data.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project serves as a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone this repository:
+    git clone https://github.com/your-username/moneymemo.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Navigate to the project directory:
+    cd moneymemo
+
+3. Install dependencies
+    flutter pub get
+
+4. Run the application
+    flutter run
