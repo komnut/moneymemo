@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:money_memo/screens/form.dart';
+import 'package:money_memo/screens/edit_form.dart'; // นำเข้า EditFormScreen
 import 'package:money_memo/services/firestore_service.dart';
 import 'package:money_memo/widgets/appbar.dart';
 import 'package:money_memo/widgets/cardmain.dart';
-import 'package:money_memo/widgets/background_container.dart'; // ใช้ Widget ใหม่
+import 'package:money_memo/widgets/background_container.dart';
 
 class MainScreen extends StatelessWidget {
   final String username;
@@ -48,7 +49,19 @@ class MainScreen extends StatelessWidget {
                   provider: memo.provider,
                   dueDate: memo.dueDate.toString().split(' ')[0],
                   onEdit: () {
-                    // แก้ไข memo ตามที่ต้องการ
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditFormScreen(
+                          username: username,
+                          memoId: snapshot.data![index].id, // ส่ง memoId
+                          subject: memo.subject,
+                          money: memo.money,
+                          provider: memo.provider,
+                          dueDate: memo.dueDate,
+                        ),
+                      ),
+                    );
                   },
                 );
               },
