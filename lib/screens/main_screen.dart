@@ -13,8 +13,9 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('username : $username');
     return Scaffold(
-      appBar: const AppbarWidget(title: 'Money Memo'),
+      appBar: AppbarWidget(title: 'Welcome, $username'), // แสดงชื่อผู้ใช้
       body: StreamBuilder<List<Memo>>(
         stream: FirestoreService().getUserMemos(username),
         builder: (context, snapshot) {
@@ -54,7 +55,7 @@ class MainScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => EditFormScreen(
                           username: username,
-                          memoId: snapshot.data![index].id, // ส่ง memoId
+                          memoId: snapshot.data![index].id,
                           subject: memo.subject,
                           money: memo.money,
                           provider: memo.provider,

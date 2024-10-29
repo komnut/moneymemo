@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:money_memo/services/auth_service.dart';
+import 'package:money_memo/screens/login_screen.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -30,15 +32,27 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           child: Text(
             title,
             style: const TextStyle(
-                fontFamily: 'Inter Tight',
-                color: Colors.white,
-                fontSize: 22,
-                letterSpacing: 0.0,
-                fontWeight: FontWeight.bold),
+              fontFamily: 'Inter Tight',
+              color: Colors.white,
+              fontSize: 22,
+              letterSpacing: 0.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
-      centerTitle: false,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () async {
+            await AuthService().logout(); // ออกจากระบบ
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
+            );
+          },
+        ),
+      ],
       elevation: 2,
     );
   }
