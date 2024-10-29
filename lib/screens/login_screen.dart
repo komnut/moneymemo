@@ -24,8 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                MainScreen(username: user.email ?? 'Unknown')),
+            builder: (context) => MainScreen(
+                  username: user.email ?? 'Unknown',
+                  email: user.email ?? 'Unknown',
+                )),
       );
     } else {
       // แจ้งเตือนเมื่อมีข้อผิดพลาด

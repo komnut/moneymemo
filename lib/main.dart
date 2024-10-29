@@ -37,9 +37,11 @@ class AuthWrapper extends StatelessWidget {
 
     if (user != null) {
       return MainScreen(
-          username: user.email ?? 'Unknown'); // ถ้ามีผู้ใช้ล็อกอินแล้ว
+        username: user.email ?? 'Unknown',
+        email: user.email ?? 'Unknown',
+      ); // ถ้ามีผู้ใช้ล็อกอินแล้ว
     } else {
-      return SignUpScreen(); // ถ้าไม่มีผู้ใช้ให้ไปที่หน้า LoginScreฑen
+      return const SignUpScreen(); // ถ้าไม่มีผู้ใช้ให้ไปที่หน้า LoginScreฑen
     }
   }
 }
