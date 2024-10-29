@@ -91,7 +91,11 @@ class _EditFormScreenState extends State<EditFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWidget(title: 'Edit Memo', showBackButton: true),
+      appBar: const AppbarWidget(
+        title: 'Edit Memo',
+        showDeleteButton: true,
+        showBackButton: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -147,7 +151,8 @@ class _EditFormScreenState extends State<EditFormScreen> {
                       ? 'Please enter a valid amount.'
                       : null, // ข้อความผิดพลาด
                 ),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
               ),
               TextFormField(
                 initialValue: _provider,
@@ -171,13 +176,31 @@ class _EditFormScreenState extends State<EditFormScreen> {
                 onTap: () => _selectDueDate(context),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _updateMemo();
-                  }
-                },
-                child: const Text('Update'),
+              Expanded(child: Container()),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(
+                          0xFF9FE2BF), // สีเขียวแบบ Bootstrap btn-success
+                      foregroundColor: Colors.white, // สีข้อความ (ให้เป็นสีขาว)
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16), // เพิ่มระยะห่างให้เหมือนปุ่ม Bootstrap
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(8), // ปรับให้มุมมนเล็กน้อย
+                      ),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _updateMemo();
+                      }
+                    },
+                    child: const Text('Update', style: TextStyle(fontSize: 18)),
+                  ),
+                ),
               ),
             ],
           ),

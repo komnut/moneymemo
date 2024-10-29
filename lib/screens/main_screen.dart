@@ -13,9 +13,12 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('username : $username');
     return Scaffold(
-      appBar: AppbarWidget(title: 'Welcome, $username'), // แสดงชื่อผู้ใช้
+      appBar: AppbarWidget(
+        title: 'Welcome, $username',
+        showLogoutButton: true,
+        showBackButton: false,
+      ), // แสดงชื่อผู้ใช้
       body: StreamBuilder<List<Memo>>(
         stream: FirestoreService().getUserMemos(username),
         builder: (context, snapshot) {

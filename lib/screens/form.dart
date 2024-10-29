@@ -71,7 +71,10 @@ class _FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWidget(title: 'Add New Memo', showBackButton: true),
+      appBar: const AppbarWidget(
+        title: 'Add New Memo',
+        showBackButton: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -122,14 +125,32 @@ class _FormScreenState extends State<FormScreen> {
                     _selectDueDate(context), // แสดง DatePicker เมื่อคลิก
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    _saveMemo(); // บันทึกข้อมูลเมื่อกด Save
-                  }
-                },
-                child: const Text('Save'),
+              Expanded(child: Container()),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(
+                          0xFF9FE2BF), // สีเขียวแบบ Bootstrap btn-success
+                      foregroundColor: Colors.white, // สีข้อความ (ให้เป็นสีขาว)
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16), // เพิ่มระยะห่างให้เหมือนปุ่ม Bootstrap
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(8), // ปรับให้มุมมนเล็กน้อย
+                      ),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        _saveMemo(); // บันทึกข้อมูลเมื่อกด Save
+                      }
+                    },
+                    child: const Text('Add', style: TextStyle(fontSize: 18)),
+                  ),
+                ),
               ),
             ],
           ),
