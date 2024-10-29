@@ -71,7 +71,7 @@ class _FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWidget(title: 'Add New Memo'),
+      appBar: const AppbarWidget(title: 'Add New Memo', showBackButton: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(

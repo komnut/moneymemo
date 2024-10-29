@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:money_memo/screens/signup_screen.dart';
 import 'package:money_memo/services/auth_service.dart';
-import 'package:money_memo/screens/login_screen.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final Widget? leading;
+  final bool showBackButton; // เพิ่มตัวแปรนี้เพื่อแสดงปุ่ม Back
 
-  const AppbarWidget({super.key, required this.title, this.leading});
+  const AppbarWidget({
+    super.key,
+    required this.title,
+    this.showBackButton = false, // ค่าเริ่มต้นเป็น false
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      leading: leading,
+      leading: showBackButton // ถ้า showBackButton เป็น true ให้แสดงปุ่ม Back
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          : null,
       flexibleSpace: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -45,10 +56,10 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: const Icon(Icons.logout),
           onPressed: () async {
-            await AuthService().logout(); // ออกจากระบบ
+            await AuthService().logout();
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const LoginScreen()),
+              MaterialPageRoute(builder: (context) => const SignUpScreen()),
             );
           },
         ),

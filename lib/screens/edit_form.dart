@@ -91,7 +91,7 @@ class _EditFormScreenState extends State<EditFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWidget(title: 'Edit Memo'),
+      appBar: const AppbarWidget(title: 'Edit Memo', showBackButton: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
